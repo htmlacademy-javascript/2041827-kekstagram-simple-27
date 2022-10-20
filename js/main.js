@@ -1,7 +1,7 @@
 // Функция, возвращающая случайное целое число из переданного диапазона включительно
 function getRandomInt(min, max) {
   if (min >= 0 && max >= 0) {
-    if (min >= max) {
+    if (min === max || min > max) {
       return NaN;
     }
     min = Math.ceil(min);
@@ -15,10 +15,14 @@ getRandomInt(1, 4);
 
 // Функция для проверки максимальной длины строки
 function checkLength (stringChecked, maxLength) {
-  if (stringChecked.length <= maxLength) {
-    return true;
+  if (typeof stringChecked === 'string') {
+    if (stringChecked.length <= maxLength) {
+      return true;
+    }
+    return false;
+  } else {
+    return false;
   }
-  return false;
 }
 
 checkLength('Вот такой комментарий', 140);
